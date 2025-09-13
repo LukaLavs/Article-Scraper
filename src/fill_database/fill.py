@@ -3,7 +3,6 @@ from models import (
     PriceLatest,
 )
 from typing import Optional, Tuple, List, final, Type
-from scraping.scrape_mercator import MercatorScraper
 from scraping.scrape_base import BaseScraper
 from interfaces.article_dict import ArticleDict
 from datetime import datetime   
@@ -101,7 +100,6 @@ class UpdateDatabase:
         limit=20,
         MAX_PRODUCTS: int = 1000000,
     ) -> None:    
-        mercator_scraper = MercatorScraper()
         request_timestamp = int(datetime.now().timestamp() * 1000)
         seen_ean_13 = set()
         limit = limit
@@ -110,7 +108,7 @@ class UpdateDatabase:
         article: Optional[Tuple[List[ArticleDict], set | str]]
         while (
             (
-                article := mercator_scraper.parse(
+                article := scraper.parse(
                     request_timestamp=request_timestamp,
                     seen_ean_13=seen_ean_13,
                     limit=limit, offset=offset,

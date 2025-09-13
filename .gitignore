@@ -1,7 +1,7 @@
 .env 
-logs/
+logs/*
 !logs/.gitkeep
-data/db/
+data/db/*
 !data/db/.gitkeep
 
 tests.py

@@ -28,6 +28,7 @@ class BaseScraper(ABC):
         image = Image.open(BytesIO(image_resp.content))
         image.thumbnail((64, 64))
         buffer = BytesIO()
+        image = image.convert("L")
         image.save(buffer, format="JPEG", quality=40)
         image_bytes = buffer.getvalue()
         return image_bytes

@@ -5,7 +5,7 @@ from typing import (
 if TYPE_CHECKING: 
     from .articles import Article
 from sqlalchemy import (
-    String, ForeignKey,
+    String, 
 )
 from sqlalchemy.orm import (
     Mapped, mapped_column, relationship,
