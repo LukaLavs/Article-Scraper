@@ -1,0 +1,129 @@
+{
+   "products": [
+      {
+         "data": {
+            "cinv": "17039996",
+            "code": "00318396",
+            "codewz": "318396", 
+            "name": "Pi\u0161\u010dan\u010dji file zrezki Natur Premium, Perutnina Ptuj, pakirano, 500 g, IK",
+            "unit_quantity": "500",
+            "invoice_unit": "Kos",
+            "invoice_unit_type": "1",
+            "average_weight": 0,
+            "normal_price": 0,
+            "current_price": "6.69",
+            "pc30_price": "0.00",
+            "price_per_unit": 13.38,
+            "price_per_unit_base": "1kg",
+            "eko": "0",
+            "has_recipes": "1",
+            "brand_name": "PERUTNINA PTUJ NATUR PREMIUM",
+            "gtins": [
+               {
+                  "gtin": "2770891"
+               },
+               {
+                  "gtin": "3838977030822"
+               }
+            ],
+            "allergens": [
+               {
+                  "value": "70_false",
+                  "hover_text": "Ne vsebuje jajc"
+               },
+               {
+                  "value": "71_false",
+                  "hover_text": "Ne vsebuje ore\u0161\u010dkov"
+               },
+               {
+                  "value": "72_false",
+                  "hover_text": "Ne vsebuje glutena"
+               },
+               {
+                  "value": "73_false",
+                  "hover_text": "Ne vsebuje mleka"
+               },
+               {
+                  "value": "74_false",
+                  "hover_text": "Ne vsebuje soje"
+               },
+               {
+                  "value": "75_false",
+                  "hover_text": "Ne vsebuje ara\u0161idov"
+               },
+               {
+                  "value": "76_false",
+                  "hover_text": "Ne vsebuje listne zelene"
+               },
+               {
+                  "value": "77_false",
+                  "hover_text": "Ne vsebuje rib"
+               },
+               {
+                  "value": "78_false",
+                  "hover_text": "Ne vsebuje rakov"
+               },
+               {
+                  "value": "79_false",
+                  "hover_text": "Ne vsebuje gor\u010di\u010dnega semena"
+               },
+               {
+                  "value": "80_false",
+                  "hover_text": "Ne vsebuje semena sezama"
+               },
+               {
+                  "value": "81_false",
+                  "hover_text": "Ne vsebuje SO2 v izdelku (ve\u010d kot 10mg/kg ali 10mg/l)"
+               },
+               {
+                  "value": "82_false",
+                  "hover_text": "Ne vsebuje vol\u010djega boba in proizvodov iz njega"
+               },
+               {
+                  "value": "83_false",
+                  "hover_text": "Ne vsebuje mehku\u017ecev in proizvodov iz njih"
+               }
+            ],
+            "discounts": [
+               {
+                  "discount_id": "5743",
+                  "group_type": "other",
+                  "value": "",
+                  "marker_code": "123",
+                  "valid_from": "20250905233456",
+                  "valid_to": "20250916233456",
+                  "discount_price": 0,
+                  "clubs": "",
+                  "clubs_array": null,
+                  "coupon": "",
+                  "hover_text": "Izbrana kakovost",
+                  "sort": "9999.0000"
+               }
+            ],
+            "ratings_sum": "16",
+            "ratings_num": "5",
+            "rating": 3.2,
+            "package": 0,
+            "offer_expires_on": "1970-01-01",
+            "category1": "MESO, MESNI IZDELKI IN RIBE",
+            "category2": "SVE\u017dE MESO",
+            "category3": "PERUTNINA",
+            "analyticsObject": "{\"item_id\":\"17039996\",\"item_name\":\"Pi\\u0161\\u010dan\\u010dji file zrezki Natur Premium, Perutnina Ptuj, pakirano, 500 g, IK\",\"currency\":\"EUR\",\"item_brand\":\"PERUTNINA PTUJ NATUR PREMIUM\",\"item_category\":\"MESO, MESNI IZDELKI IN RIBE\",\"item_category2\":\"SVE\\u017dE MESO\",\"item_category3\":\"PERUTNINA\",\"item_rating\":3,\"price\":6.69}",
+            "personal_offer_recommendation_id": 0
+         },
+         "itemId": "17039996",
+         "className": "size11",
+         "type": "product",
+         "mainImageSrc": "https://mercatoronline.si/img/cache/products/8474/product_small_image/00318396.jpg",   
+         "_meta": {
+            "es_score": 6787,
+            "mc_score": "0"
+         },
+         "url": "/izdelek/17039996/piscancji-file-zrezki-natur-premium-perutnina-ptuj-pakirano-500-g-ik",        
+         "short_name": "Pi\u0161\u010dan\u010dji file zrezki Natur Premium, Perutnina Ptuj, pakirano, 500 g, IK",
+         "total": 10000,
+         "ordNum": 100
+      }
+   ],
+   "filterData": []
+}

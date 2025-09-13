@@ -1,0 +1,13 @@
+.env 
+logs/
+!logs/.gitkeep
+data/db/
+!data/db/.gitkeep
+
+tests.py
+tests/
+
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
