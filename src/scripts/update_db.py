@@ -20,6 +20,7 @@ if __name__ == "__main__":
         scraper=scraper,
         session=session,
         limit=100,
+        offset=0,
         MAX_PRODUCTS=10_000,
     )
         

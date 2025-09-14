@@ -97,7 +97,8 @@ class UpdateDatabase:
         self,
         scraper: Type[BaseScraper],
         session: Session,
-        limit=20,
+        limit: int = 100,
+        offset: int = 0,
         MAX_PRODUCTS: int = 1000000,
     ) -> None:    
         request_timestamp = int(datetime.now().timestamp() * 1000)
@@ -130,6 +131,8 @@ class UpdateDatabase:
                 ) 
             
             offset += 1
+        
+        return None
             
             
 

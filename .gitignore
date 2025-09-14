@@ -5,7 +5,11 @@ data/db/*
 !data/db/.gitkeep
 
 tests.py
+tests2.py
 tests/
+src/mercator_json_example.json 
+test_con.py 
+ttt.py
 
 __pycache__/
 *.py[cod]
