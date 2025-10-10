@@ -1,9 +1,18 @@
+from __future__ import annotations
+from typing import (
+    TYPE_CHECKING,
+)
+if TYPE_CHECKING:
+    from scraping.scrape_base import BaseScraper
+    from scraping.scrape_mercator import MercatorScraper
 from models import (
     Store, Article, Price, Category, Image,
     PriceLatest,
 )
-from typing import Optional, Tuple, List, final, Type
-from scraping.scrape_base import BaseScraper
+from typing import (
+    Optional, Tuple, List, 
+    final
+)
 from interfaces.article_dict import ArticleDict
 from datetime import datetime   
 from sqlalchemy.orm import Session
@@ -17,7 +26,7 @@ class UpdateDatabase:
         session: Session, 
         article_data: ArticleDict, 
         store_name: str, 
-        scraper: Type[BaseScraper],
+        scraper: MercatorScraper,
         ) -> Optional[Article]:
         
         if not (
@@ -62,6 +71,7 @@ class UpdateDatabase:
         if (
             latest_price := session.query(PriceLatest)
             .filter_by(article_id=article.id)
+            .order_by(PriceLatest.timestamp.desc())
             .first()
         ) and (
             latest_price.price == article_data["price"]
@@ -95,18 +105,18 @@ class UpdateDatabase:
     
     def insert_mercator_articles(
         self,
-        scraper: Type[BaseScraper],
+        scraper: MercatorScraper,
         session: Session,
         limit: int = 100,
         offset: int = 0,
         MAX_PRODUCTS: int = 1000000,
     ) -> None:    
         request_timestamp = int(datetime.now().timestamp() * 1000)
-        seen_ean_13 = set()
+        seen_ean_13: set | str = set()
         limit = limit
         offset = 0
         
-        article: Optional[Tuple[List[ArticleDict], set | str]]
+        article: Optional[Tuple[List[ArticleDict], set[str], bool]]
         while (
             (
                 article := scraper.parse(
@@ -118,8 +128,8 @@ class UpdateDatabase:
                 offset * limit < MAX_PRODUCTS
             )
         ):
-            articles_data, seen_ean_13 = article
-            if seen_ean_13 == "all":
+            articles_data, seen_ean_13, all_seen = article
+            if all_seen:
                 # All codes seen
                 break
             for article_data in articles_data:
