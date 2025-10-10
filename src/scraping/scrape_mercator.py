@@ -94,7 +94,7 @@ class MercatorScraper(BaseScraper):
         self, request_timestamp: int,
         seen_ean_13: set,
         limit: int = 20, offset: int = 0,
-    ) -> Optional[Tuple[List[ArticleDict], set | str]]:
+    ) -> Optional[Tuple[List[ArticleDict], set[str], bool]]:
         today = date.today()
         from_ = offset * limit
         scraped_at: date = today
@@ -116,8 +116,9 @@ class MercatorScraper(BaseScraper):
                     continue
                 
                 if (ean_13 := article["ean_13"]) in seen_ean_13:
-                    # All ean_13 codes seen
-                    return articles, "all"
+                    
+                    all_seen = True
+                    return articles, seen_ean_13, all_seen
                 else:
                     seen_ean_13.add(ean_13)
                     
@@ -125,4 +126,5 @@ class MercatorScraper(BaseScraper):
         else: 
             return None
 
-        return articles, seen_ean_13
+        all_seen = False
+        return articles, seen_ean_13, all_seen

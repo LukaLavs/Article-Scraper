@@ -19,7 +19,7 @@ class PriceLatest(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     article_id: Mapped[int] = mapped_column(ForeignKey("articles.id"), index=True)
-    price: Mapped[int] = mapped_column(Numeric(7, 2), nullable=False)
+    price: Mapped[float] = mapped_column(Numeric(7, 2), nullable=False)
     price_per_unit: Mapped[float] = mapped_column(Numeric(7, 2))
     price_per_unit_base: Mapped[str] = mapped_column(String(3))
     timestamp: Mapped[date] = mapped_column(Date, default=date.today)

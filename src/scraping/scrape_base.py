@@ -42,5 +42,5 @@ class BaseScraper(ABC):
     @abstractmethod
     def parse(
         self, *args, **kwargs,
-    ) -> Dict[str, Any]:
+    ) -> Any:
         pass
