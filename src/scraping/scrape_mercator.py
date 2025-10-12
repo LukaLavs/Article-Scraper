@@ -5,8 +5,10 @@ from datetime import (
 from typing import (
     Dict, Any, List, Optional, Tuple
 )
+from decimal import Decimal
 from .scrape_base import BaseScraper
 from interfaces.article_dict import ArticleDict
+from utils.logging import log
 
 class MercatorScraper(BaseScraper):
     
@@ -53,14 +55,14 @@ class MercatorScraper(BaseScraper):
 
         name: str = article_data["name"]
         brand_name: str = article_data["brand_name"]
-        price: float = float(
-            article_data["current_price"]
+        price: Decimal = Decimal(
+            str(article_data["current_price"])
         )
-        price_per_unit: float = float(
-            article_data["price_per_unit"]
+        price_per_unit: Decimal = Decimal(
+            str(round(article_data["price_per_unit"], 2)) # Mercator API gives rounding errors
         )
         price_per_unit_base: str = article_data["price_per_unit_base"]
-        unit_quantity = float(
+        unit_quantity: Decimal = Decimal(
             article_data["unit_quantity"]
         )
         invoice_unit: str = article_data["invoice_unit"]

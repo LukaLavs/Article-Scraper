@@ -16,4 +16,6 @@ __pycache__/
 *.pyo
 *.pyd
 
+store_base.egg-info/
+
 venv/

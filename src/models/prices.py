@@ -13,6 +13,7 @@ from sqlalchemy.orm import (
     Mapped, mapped_column, relationship,
 )
 from .base import Base
+from decimal import Decimal
 
 class Price(Base):
     __tablename__ = "prices"
@@ -24,8 +25,8 @@ class Price(Base):
     )
     id: Mapped[int] = mapped_column(primary_key=True)
     article_id: Mapped[int] = mapped_column(ForeignKey("articles.id"))
-    price: Mapped[int] = mapped_column(Numeric(7, 2), nullable=False)
-    price_per_unit: Mapped[float] = mapped_column(Numeric(7, 2))
+    price: Mapped[Decimal] = mapped_column(Numeric(7, 2), nullable=False)
+    price_per_unit: Mapped[Decimal] = mapped_column(Numeric(7, 2))
     price_per_unit_base: Mapped[str] = mapped_column(String(3))
     timestamp: Mapped[date] = mapped_column(Date, default=date.today)
     
