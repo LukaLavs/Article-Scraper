@@ -19,3 +19,4 @@ __pycache__/
 store_base.egg-info/
 
 venv/
+.envrc
