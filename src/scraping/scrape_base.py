@@ -7,8 +7,12 @@ from typing import (
 import requests
 from PIL import Image 
 from io import BytesIO
+from utils.http_retry_adapter import _build_session
 
 class BaseScraper(ABC):
+
+    def __init__(self) -> None:
+        self.session = _build_session()
     
     @abstractmethod
     def get_link(
@@ -17,21 +21,21 @@ class BaseScraper(ABC):
         pass 
 
     @final
-    def get_img(
-        self, url: str,
-    ) -> Optional[bytes]:
-        image_resp = requests.get(url)
-        try: 
-            image_resp.raise_for_status()
+    def get_img(self, url: str) -> Optional[bytes]:
+        try:
+            resp = self.session.get(url, timeout=15)
+            resp.raise_for_status()
+        except requests.RequestException:
+            return None
+        try:
+            image = Image.open(BytesIO(resp.content))
+            image.thumbnail((64, 64))
+            image = image.convert("L")
+            buffer = BytesIO()
+            image.save(buffer, format="JPEG", quality=40)
+            return buffer.getvalue()
         except Exception:
             return None
-        image = Image.open(BytesIO(image_resp.content))
-        image.thumbnail((64, 64))
-        buffer = BytesIO()
-        image = image.convert("L")
-        image.save(buffer, format="JPEG", quality=40)
-        image_bytes = buffer.getvalue()
-        return image_bytes
     
     @abstractmethod
     def fetch(

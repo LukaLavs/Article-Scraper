@@ -24,8 +24,8 @@ class MercatorScraper(BaseScraper):
         self, limit: int, offset: int,
         timestamp: int, from_: int,
     ) -> Any:
-        url = self.get_link(limit, offset, from_, timestamp)
-        articles = requests.get(url)
+        url = self.get_link(limit, offset, timestamp, from_)
+        articles = self.session.get(url, timeout=20)
         articles.raise_for_status()
         return articles.json()
     
