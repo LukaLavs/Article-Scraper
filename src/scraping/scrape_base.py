@@ -8,8 +8,9 @@ import requests
 from PIL import Image 
 from io import BytesIO
 from utils.http_retry_adapter import _build_session
+from interfaces.fuel_dict import FuelDict
 
-class BaseScraper(ABC):
+class BaseStoreScraper(ABC):
 
     def __init__(self) -> None:
         self.session = _build_session()
@@ -47,4 +48,14 @@ class BaseScraper(ABC):
     def parse(
         self, *args, **kwargs,
     ) -> Any:
+        pass
+
+class BaseFuelScraper(ABC):
+    def __init__(self) -> None:
+        self.session = _build_session()
+
+    @abstractmethod
+    def parse(
+        self, *args, **kwargs,
+    ) -> FuelDict:
         pass

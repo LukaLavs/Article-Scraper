@@ -6,11 +6,11 @@ from typing import (
     Dict, Any, List, Optional, Tuple
 )
 from decimal import Decimal
-from .scrape_base import BaseScraper
+from .scrape_base import BaseStoreScraper
 from interfaces.article_dict import ArticleDict
 from utils.logging import log
 
-class MercatorScraper(BaseScraper):
+class MercatorScraper(BaseStoreScraper):
     
     BASE_URL =  "https://mercatoronline.si/products/browseProducts/getProducts"
     

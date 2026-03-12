@@ -5,9 +5,10 @@ from .categories import Category
 from .images import Image
 from .prices import Price
 from .prices_latest import PriceLatest
+from .fuel_prices import FuelPrice
 
 __all__ = [
     "Store", "Article", "Category", 
     "Image", "Price", "PriceLatest",
-    "Base"
+    "Base", "FuelPrice",
 ]

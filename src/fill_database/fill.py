@@ -1,18 +1,21 @@
 from __future__ import annotations
 from typing import (
-    TYPE_CHECKING,
+    TYPE_CHECKING, Callable,
 )
 if TYPE_CHECKING:
     from scraping.scrape_mercator import MercatorScraper
+    from scraping.scrape_fuel_sellers import PetrolScraper
+
 from models import (
     Store, Article, Price, Category, Image,
-    PriceLatest,
+    PriceLatest, FuelPrice,
 )
 from typing import (
     Optional, Tuple, List, 
     final
 )
 from interfaces.article_dict import ArticleDict
+from interfaces.fuel_dict import FuelDict
 from datetime import datetime   
 from sqlalchemy.orm import Session
 from utils.logging import log
@@ -21,7 +24,7 @@ from utils.logging import log
 class UpdateDatabase:
     
     @final    
-    def insert_article(
+    def insert_mercator_article(
         self,
         session: Session, 
         article_data: ArticleDict, 
@@ -156,7 +159,7 @@ class UpdateDatabase:
                 )
                 break
             for article_data in articles_data:
-                self.insert_article(
+                self.insert_mercator_article(
                     session=session,
                     article_data=article_data,
                     store_name="Mercator",
@@ -166,6 +169,15 @@ class UpdateDatabase:
             offset += 1
         
         return None
+    
+    def insert_fuel_prices(self, 
+        session: Session,
+        scraper: Callable[..., List[FuelDict]]
+    ): 
+        fuel_dict = scraper.parse()
+        session.add_all(FuelPrice(**d) for d in fuel_dict)
+        session.commit()
+        log.info("Fuel prices inserted")
             
             
 
