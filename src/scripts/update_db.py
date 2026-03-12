@@ -19,16 +19,15 @@ if __name__ == "__main__":
     updater = UpdateDatabase()
     session = Session(engine) 
         
-    if True: 
+    try: 
         updater.insert_fuel_prices(
             session=session,
             scraper=petrol_scraper,
         )
-    # except Exception as e: 
-    #     log.error(f"Petrol Scraper Failed!\n{e}")
+    except Exception as e: 
+        log.error(f"Petrol Scraper Failed!\n{e}")
 
     try: 
-            
         updater.insert_mercator_articles(
             scraper=mercator_scraper,
             session=session,
